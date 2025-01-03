@@ -5,6 +5,7 @@ import { GiftDialog } from './GiftDialog'
 import { Pagination } from './Pagination'
 import { EmptyState } from './EmptyState'
 import { Image } from './Image'
+import { formatPrice } from '../utils/formatters'
 
 type GiftGridProps = {
   gifts: Gift[]
@@ -70,7 +71,7 @@ export function GiftGrid({ gifts, favorites, onToggleFavorite, sortOrder }: Gift
               <p className="mt-1 text-gray-500 dark:text-gray-400">{gift.description}</p>
               <div className="mt-4 flex items-center justify-between">
                 <span className="text-lg font-bold text-gray-900 dark:text-white">
-                  {gift.price.toFixed(2)} MGA
+                  {formatPrice(gift.price)} MGA
                 </span>
                 <button
                   onClick={() => setSelectedGift(gift)}
