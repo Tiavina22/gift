@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { X, Download } from 'lucide-react'
 import html2canvas from 'html2canvas'
 import type { Gift } from '../types'
@@ -13,6 +13,18 @@ type GiftDialogProps = {
 
 export function GiftDialog({ gift, isOpen, onClose }: GiftDialogProps) {
   const cardRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add('dialog-open')
+    } else {
+      document.body.classList.remove('dialog-open')
+    }
+    
+    return () => {
+      document.body.classList.remove('dialog-open')
+    }
+  }, [isOpen])
 
   const exportAsImage = async () => {
     if (!cardRef.current) return
@@ -38,7 +50,10 @@ export function GiftDialog({ gift, isOpen, onClose }: GiftDialogProps) {
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-      <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" onClick={onClose} />
+      <div 
+        className="fixed inset-0 bg-black/80 backdrop-blur-sm transition-opacity" 
+        onClick={onClose} 
+      />
 
       <div className="flex min-h-full items-center justify-center p-4">
         <div className="relative transform overflow-hidden rounded-lg bg-white dark:bg-gray-800 shadow-xl transition-all max-w-2xl w-full">
