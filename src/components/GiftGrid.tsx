@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import type { Gift } from '../types'
 import { Heart } from 'lucide-react'
 import { GiftDialog } from './GiftDialog'
+import { Pagination } from './Pagination'
 
 type GiftGridProps = {
   gifts: Gift[]
@@ -10,8 +11,11 @@ type GiftGridProps = {
   sortOrder: 'relevance' | 'price-asc' | 'price-desc'
 }
 
+const ITEMS_PER_PAGE = 9 // Nombre d'éléments par page
+
 export function GiftGrid({ gifts, favorites, onToggleFavorite, sortOrder }: GiftGridProps) {
   const [selectedGift, setSelectedGift] = useState<Gift | null>(null)
+  const [currentPage, setCurrentPage] = useState(1)
 
   const sortedGifts = [...gifts].sort((a, b) => {
     if (sortOrder === 'price-asc') return a.price - b.price
@@ -19,10 +23,21 @@ export function GiftGrid({ gifts, favorites, onToggleFavorite, sortOrder }: Gift
     return 0
   })
 
+  // Calculer les éléments de la page courante
+  const indexOfLastItem = currentPage * ITEMS_PER_PAGE
+  const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE
+  const currentGifts = sortedGifts.slice(indexOfFirstItem, indexOfLastItem)
+  const totalPages = Math.ceil(sortedGifts.length / ITEMS_PER_PAGE)
+
+  // Réinitialiser la page quand les filtres changent
+  React.useEffect(() => {
+    setCurrentPage(1)
+  }, [gifts.length])
+
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {sortedGifts.map((gift) => (
+        {currentGifts.map((gift) => (
           <div key={gift.id} className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
             <div className="relative">
               <img
@@ -62,6 +77,14 @@ export function GiftGrid({ gifts, favorites, onToggleFavorite, sortOrder }: Gift
           </div>
         ))}
       </div>
+
+      {totalPages > 1 && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+        />
+      )}
 
       {selectedGift && (
         <GiftDialog

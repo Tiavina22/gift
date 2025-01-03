@@ -24,3 +24,14 @@ body {
 * {
   transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
+
+.gift-card-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.gift-card-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
