@@ -59,9 +59,10 @@ export function GiftDialog({ gift, isOpen, onClose }: GiftDialogProps) {
         <div className="relative transform overflow-hidden rounded-lg bg-white dark:bg-gray-800 shadow-xl transition-all max-w-2xl w-full">
           <button
             onClick={onClose}
-            className="absolute right-4 top-4 text-gray-400 hover:text-gray-500 dark:hover:text-gray-300"
+            className="absolute right-2 top-2 z-10 p-2 rounded-full bg-black/50 hover:bg-black/70 text-white transition-colors duration-200"
+            aria-label="Fermer"
           >
-            <X className="h-6 w-6" />
+            <X className="h-5 w-5" />
           </button>
 
           {/* Card Content - Cette partie sera capturée */}
