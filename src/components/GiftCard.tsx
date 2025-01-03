@@ -13,7 +13,7 @@ export function GiftCard({ gift, isFavorite, onToggleFavorite }: GiftCardProps) 
     <div className="group bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
       <div className="relative overflow-hidden">
         <img
-          src={gift.imageUrl}
+          src={gift.imageSrc}
           alt={gift.name}
           className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
         />

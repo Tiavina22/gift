@@ -69,7 +69,7 @@ export type Gift = {
   name: string
   description: string
   price: number
-  imageUrl: string
+  imageSrc: string
   purchaseUrl: string
   categories: Category[]
   interests: Interest[]

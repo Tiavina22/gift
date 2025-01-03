@@ -51,7 +51,7 @@ export function GiftDialog({ gift, isOpen, onClose }: GiftDialogProps) {
           <div ref={cardRef} className="p-6 bg-white dark:bg-gray-800">
             <div className="aspect-w-16 aspect-h-9 mb-6">
               <img
-                src={gift.imageUrl}
+                src={gift.imageSrc}
                 alt={gift.name}
                 className="w-full h-64 object-cover rounded-lg"
                 crossOrigin="anonymous" // Important pour html2canvas

@@ -26,7 +26,7 @@ export function GiftGrid({ gifts, favorites, onToggleFavorite, sortOrder }: Gift
           <div key={gift.id} className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
             <div className="relative">
               <img
-                src={gift.imageUrl}
+                src={gift.imageSrc}
                 alt={gift.name}
                 className="w-full h-48 object-cover"
               />
