@@ -29,7 +29,7 @@ Une application pour trouver des idées de cadeaux personnalisées.
 
 Cloner le projet
 ```bash
-git clone https://github.com/your-username/idees-cadeaux.git
+git clone https://github.com/Tiavina22/gift
 ```
 ```bash
 cd gift
