@@ -4,6 +4,7 @@ import { Heart } from 'lucide-react'
 import { GiftDialog } from './GiftDialog'
 import { Pagination } from './Pagination'
 import { EmptyState } from './EmptyState'
+import { Image } from './Image'
 
 type GiftGridProps = {
   gifts: Gift[]
@@ -45,10 +46,10 @@ export function GiftGrid({ gifts, favorites, onToggleFavorite, sortOrder }: Gift
         {currentGifts.map((gift) => (
           <div key={gift.id} className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
             <div className="relative">
-              <img
+              <Image
                 src={gift.imageSrc}
                 alt={gift.name}
-                className="w-full h-48 object-cover"
+                className="w-full h-48"
               />
               <button
                 onClick={() => onToggleFavorite(gift.id)}
