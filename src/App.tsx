@@ -7,6 +7,7 @@ import { ThemeProvider } from './theme/ThemeContext'
 import { ThemeToggle } from './components/ThemeToggle'
 import { useFavorites } from './hooks/useFavorites'
 import { mockGifts } from './data/mockGifts'
+import { Copyright } from './components/Copyright'
 
 function App() {
   const [priceRange, setPriceRange] = useState<PriceRange>({})
@@ -38,7 +39,7 @@ function App() {
 
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
         <header className="bg-white dark:bg-gray-800 shadow-sm">
           <div className="max-w-7xl mx-auto px-4 py-6">
             <div className="flex items-center justify-between">
@@ -63,7 +64,7 @@ function App() {
           </div>
         </header>
 
-        <main className="max-w-7xl mx-auto px-4 py-8">
+        <main className="max-w-7xl mx-auto px-4 py-8 flex-1">
           <div className="grid grid-cols-1 lg:grid-cols-[300px,1fr] gap-8">
             <aside>
               <Filters
@@ -118,6 +119,8 @@ function App() {
             </div>
           </div>
         </main>
+
+        <Copyright />
       </div>
     </ThemeProvider>
   )
