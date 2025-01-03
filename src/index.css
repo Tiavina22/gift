@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Thème clair (par défaut) */
+:root {
+  --background-color: #ffffff;
+  --text-color: #333333;
+}
+
+/* Thème sombre */
+:root.dark {
+  --background-color: #1a1a1a;
+  --text-color: #ffffff;
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Transition douce pour tous les éléments qui changent avec le thème */
+* {
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
