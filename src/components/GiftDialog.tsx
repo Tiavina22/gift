@@ -3,6 +3,7 @@ import { X, Download } from 'lucide-react'
 import html2canvas from 'html2canvas'
 import type { Gift } from '../types'
 import { Image } from './Image'
+import { formatPrice } from '../utils/formatters'
 
 type GiftDialogProps = {
   gift: Gift
@@ -64,7 +65,9 @@ export function GiftDialog({ gift, isOpen, onClose }: GiftDialogProps) {
             <div className="grid grid-cols-2 gap-4 mb-6">
               <div>
                 <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">Prix</h3>
-                <p className="text-lg font-bold text-gray-900 dark:text-white">{gift.price.toFixed(2)} MGA</p>
+                <p className="text-lg font-bold text-gray-900 dark:text-white">
+                  {formatPrice(gift.price)} MGA
+                </p>
               </div>
               <div>
                 <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">Catégories</h3>
