@@ -3,6 +3,7 @@ import type { Gift } from '../types'
 import { Heart } from 'lucide-react'
 import { GiftDialog } from './GiftDialog'
 import { Pagination } from './Pagination'
+import { EmptyState } from './EmptyState'
 
 type GiftGridProps = {
   gifts: Gift[]
@@ -33,6 +34,10 @@ export function GiftGrid({ gifts, favorites, onToggleFavorite, sortOrder }: Gift
   React.useEffect(() => {
     setCurrentPage(1)
   }, [gifts.length])
+
+  if (gifts.length === 0) {
+    return <EmptyState />
+  }
 
   return (
     <>
