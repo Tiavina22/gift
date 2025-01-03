@@ -49,7 +49,7 @@ export function GiftGrid({ gifts, favorites, onToggleFavorite, sortOrder }: Gift
               <p className="mt-1 text-gray-500 dark:text-gray-400">{gift.description}</p>
               <div className="mt-4 flex items-center justify-between">
                 <span className="text-lg font-bold text-gray-900 dark:text-white">
-                  {gift.price.toFixed(2)} €
+                  {gift.price.toFixed(2)} MGA
                 </span>
                 <button
                   onClick={() => setSelectedGift(gift)}

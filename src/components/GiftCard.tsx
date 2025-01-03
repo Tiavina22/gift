@@ -43,7 +43,7 @@ export function GiftCard({ gift, isFavorite, onToggleFavorite }: GiftCardProps) 
             ))}
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-lg font-bold text-indigo-600">{gift.price.toFixed(2)} €</span>
+            <span className="text-lg font-bold text-indigo-600">{gift.price.toFixed(2)} MGA</span>
             <a
               href={gift.purchaseUrl}
               target="_blank"
