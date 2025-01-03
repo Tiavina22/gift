@@ -6,6 +6,7 @@ import { Pagination } from './Pagination'
 import { EmptyState } from './EmptyState'
 import { Image } from './Image'
 import { formatPrice } from '../utils/formatters'
+import { usePagination } from '../hooks/usePagination'
 
 type GiftGridProps = {
   gifts: Gift[]
@@ -18,7 +19,14 @@ const ITEMS_PER_PAGE = 9 // Nombre d'éléments par page
 
 export function GiftGrid({ gifts, favorites, onToggleFavorite, sortOrder }: GiftGridProps) {
   const [selectedGift, setSelectedGift] = useState<Gift | null>(null)
-  const [currentPage, setCurrentPage] = useState(1)
+  
+  const {
+    currentPage,
+    setCurrentPage,
+    totalPages,
+    indexOfFirstItem,
+    indexOfLastItem
+  } = usePagination(gifts.length, ITEMS_PER_PAGE)
 
   const sortedGifts = [...gifts].sort((a, b) => {
     if (sortOrder === 'price-asc') return a.price - b.price
@@ -26,16 +34,7 @@ export function GiftGrid({ gifts, favorites, onToggleFavorite, sortOrder }: Gift
     return 0
   })
 
-  // Calculer les éléments de la page courante
-  const indexOfLastItem = currentPage * ITEMS_PER_PAGE
-  const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE
   const currentGifts = sortedGifts.slice(indexOfFirstItem, indexOfLastItem)
-  const totalPages = Math.ceil(sortedGifts.length / ITEMS_PER_PAGE)
-
-  // Réinitialiser la page quand les filtres changent
-  React.useEffect(() => {
-    setCurrentPage(1)
-  }, [gifts.length])
 
   if (gifts.length === 0) {
     return <EmptyState />
