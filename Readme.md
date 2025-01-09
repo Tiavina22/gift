@@ -2,6 +2,10 @@
 
 Une application pour trouver des idées de cadeaux personnalisées.
 
+# TODO : priorité
+- Refactoriser le code
+- Il faut que le code soit clean
+
 ## Fonctionnalités
 
 - Catalogue riche d'idées cadeaux
