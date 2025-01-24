@@ -5,6 +5,7 @@ Une application pour trouver des idées de cadeaux personnalisées.
 # TODO : priorité
 - Refactoriser le code
 - Il faut que le code soit clean
+- Mettre les données en données réels
 
 ## Fonctionnalités
 
